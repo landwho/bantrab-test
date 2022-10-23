@@ -52,7 +52,7 @@
                             <label for="exampleFormControlInput1" class="form-label">Selecciona un estado</label>        
                             <select class="form-select" formControlName="estado">
                                 <option selected disabled>---seleccionar---</option>
-                                <option *ngFor="let state of estados" [ngValue]="state"> {{ state.estado }}</option>
+                                <option *ngFor="let state of estados" [ngValue]="state.estado"> {{ state.estado }}</option>
                             </select>
                             <small *ngIf="empresaForm.get('estado')?.invalid && empresaForm.get('estado')?.touched" class="text-danger">Estado requerido</small> 
                         </div>

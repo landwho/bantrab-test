@@ -27,14 +27,10 @@ export class ListarEmpresaComponent implements OnInit {
     openDialog(): void {
       const dialogRef = this.dialog.open(CrearNuevaComponent, {
         width: '70%',
-        data: {empresa:this.empresas},
+        data: this.empresas,
       });
   
-      dialogRef.afterClosed().subscribe(result => {
-        console.log(result)
-        console.log('The dialog was closed');
-        
-      });
+    
     }
 
   getLista(){

@@ -1,7 +1,7 @@
 <div class="container display-flex">
     <div class="row" style="overflow-x:auto;">
         <div class="col-md-12">
-            <div class="card mt-5"  >
+            <div class="card mt-5 mb-5">
                 <div class="card-title mt-5">
                     <div class="row ph-row">
                         <div class="col-md-6">
@@ -9,7 +9,7 @@
                             <p class="gestion-subtitle">Agrega, edita o elimina número de usuarios. </p>
                         </div>
                         <div class="col-md-6 flex">
-                            <button class="btn btn-agregar" (click)="openDialog()">Agregar</button>
+                            <button class="btn btn-agregar" [routerLink]="['/nuevo']">Agregar</button>
                         </div>
                     </div>
                 </div>

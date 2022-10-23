@@ -27,9 +27,9 @@ export class EmpresaService {
       const headers = { 'user': 'User123', 'password': 'Password123' }
     return this.http.post('https://apitest-bt.herokuapp.com/api/v1/empresas',obj, { headers });
   }
-  editarEmpresa(id:number,obj:any){
+  editarEmpresa(id:number,obj:EmpresaModel){
       const headers = { 'user': 'User123', 'password': 'Password123' }
-    return this.http.put<EmpresaModel>('https://apitest-bt.herokuapp.com/api/v1/empresas/'+id,obj ,{ headers });
+    return this.http.put<EmpresaModel>('https://apitest-bt.herokuapp.com/api/v1/empresas/'+id, obj ,{ headers });
   }
   eliminarEmpresa(id:number){
       const headers = { 'user': 'User123', 'password': 'Password123' }

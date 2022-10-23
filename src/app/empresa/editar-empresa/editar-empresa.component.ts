@@ -22,12 +22,11 @@ export class EditarEmpresaComponent implements OnInit {
   empresaId:number =0;
   empresa:any;
   error:any;
-  isDisabled = true;
+  isDisabled:boolean = true;
 
   constructor(private _api:EmpresaService, private _activateRoute : ActivatedRoute, private router: Router) {
     this.empresaForm = this.createForm();
-    console.log(this.CrearEmpresa);
-    console.log(this.empresa)
+
    }
 
   ngOnInit(): void {
@@ -37,7 +36,7 @@ export class EditarEmpresaComponent implements OnInit {
 
       this._api.verEmpresa(this.empresaId).pipe(takeUntil(this._unsubscribeAll))
       .subscribe((data) => {
-        console.log(data)
+     
         this.empresa = data;
       }) 
 
@@ -62,55 +61,44 @@ export class EditarEmpresaComponent implements OnInit {
       nit:              new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern(/^[0-9]\d{6,10}$/)]),
       correo:           new FormControl('', [Validators.required, Validators.minLength(5), Validators.pattern(this.emailPattern)]),
       estado:           new FormControl('', [Validators.required, Validators.minLength(3)]),
-      direccion:        new FormControl('', [Validators.required, Validators.minLength(3)])
+      direccion:        new FormControl('', [Validators.required, Validators.minLength(2)])
     });
   }
 
   editarEmpresa(): void {
     this.empresaForm.value
-    console.log(this.empresaForm.value)
+    // console.log(this.empresaForm.value)
     if (this.empresaForm.valid) {
-      this._api.editarEmpresa(this.empresaId, this.empresaForm.value).subscribe(data=>{
-        console.log(data)
-        // Swal.fire("Empresa modificada correctamente.")
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-          }).then((result) => {
-            if (result.isConfirmed) {
-              // Swal.fire(
-              //   'Deleted!',
-              //   'Your file has been deleted.',
-              //   'success',
-              // )
-              this.router.navigateByUrl('/listar')
-            }
-          })
-      },
-      error => {
-        this.error = error;
-        console.log(this.error.error.razon_social[0]);
-        Swal.fire(this.error.error.razon_social[0])
-      }
-  ); 
-      console.log(this.empresaForm.value)
+        this._api.editarEmpresa(this.empresaId, this.empresaForm.value).subscribe(data=>{
+
+          Swal.fire("Empresa modificada correctamente.")
+          this.router.navigateByUrl('/listar')
+        },
+        error => {
+          this.error = error;
+          if(this.error.error.correo){Swal.fire("Correo ya esta registrado")}
+          if(this.error.error.razon_social){Swal.fire("Razon social ya esta registrado")}
+          if(this.error.error.nit){Swal.fire("El NIT ya esta registrado")}
+        }); 
     }
 
   }
 
   estados=[
     {"estado":"nuevo"},
-    {"estado":"modificado"},
+    {"estado":"actualizado"},
     {"estado":"activo"},
     {"estado":"inactivo"}
   ]
 
+  ngAfterViewInit(){
+    this.isDisabled = true;
+  }
 
+  ngOnDestroy(){
+    this._unsubscribeAll.next(null);
+    this._unsubscribeAll.complete();
+  }
 
 
 

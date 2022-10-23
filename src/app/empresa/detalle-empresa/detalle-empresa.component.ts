@@ -28,7 +28,6 @@ export class DetalleEmpresaComponent implements OnInit {
   verEmpresa(){
     this._api.verEmpresa(this.empresaId).pipe(takeUntil(this._unsubscribeAll))
     .subscribe((data) => {
-      console.log(data)
       this.empresa = data;
     }) 
   }
