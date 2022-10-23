@@ -1,0 +1,20 @@
+.color {
+    color: #511a88;
+    font-weight: 500;
+    background-color: #e5d7f0;
+    height: 1px;
+}
+
+.color2 {
+    color: #511a88;
+    font-weight: 500;
+    background-color:  #9ad7ff;
+    height: 1px;
+}
+
+tbody, td, tfoot, th, thead, tr {
+    border-style: inherit;
+}
+td i{
+    padding-right: 20px;
+}

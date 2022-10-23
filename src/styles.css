@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.pointer{ 
+    cursor: pointer;
+}
+.display-flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 75vh;
+}
+/* CARD TITLE HEADER STYLE  */
+.card{
+    border: 3px solid #5e1ba4;
+    box-shadow: 5px 10px 18px #888888;
+}
+label{
+    color: rgb(107,30,171);
+}
+.ph-row{
+    padding-right: 20px;
+    padding-left: 25px;
+}
+.flex{
+    justify-content: end;
+    align-items: center;
+    display: flex;
+} 
+.card-title{
+    height: 100%;
+    background: rgb(107,30,171);
+    background: linear-gradient(90deg, rgba(107,30,171,1) 0%, rgba(10,10,121,1) 54%, rgba(219,239,252,1) 100%);
+    color: white;
+}
+.gestion-title{
+    font-size: 2rem;
+    font-weight: 800;
+}
+.btn-agregar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 140px;
+    border-radius: 25px;
+    background: rgb(107,30,171);
+    background: linear-gradient(90deg, rgba(107,30,171,1) 0%, rgba(9,9,121,1) 38%, rgba(32,136,200,1) 100%);
+    color: white;
+}

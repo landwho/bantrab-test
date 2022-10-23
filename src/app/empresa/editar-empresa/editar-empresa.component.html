@@ -1,0 +1,131 @@
+<!-- <div class="container">
+    <div class="row d-flex justify-content">
+        <div class="col-md-12">
+           <div class="card px-5 py-3">
+            <p>Editar Empresa</p>
+            <form [formGroup]="empresaForm" name="form" (ngSubmit)="onSendPromotion()">
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Nombre Comercial </label>
+                        <input type="text" formControlName="nombre_comercial" [(ngModel)]="empresa.nombre_comercial" class="form-control">
+                        <small *ngIf="empresaForm.get('nombre_comercial')?.invalid && empresaForm.get('nombre_comercial')?.touched" class="text-danger">Nombre Comercial requerido</small>
+                    </div>
+                    <div class="col">
+                        <label for="exampleFormControlInput1" class="form-label">Razón Social </label>
+                        <input type="text" formControlName="razon_social" [(ngModel)]="empresa.razon_social" class="form-control">
+                        <small *ngIf="empresaForm.get('razon_social')?.invalid && empresaForm.get('razon_social')?.touched" class="text-danger">Razon Social requerida</small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Teléfono</label>
+                        <input type="phone" formControlName="telefono" [(ngModel)]="empresa.telefono" class="form-control">
+                        <small *ngIf="empresaForm.get('telefono')?.invalid && empresaForm.get('telefono')?.touched" class="text-danger">Email requerido</small>
+                    </div>
+                    <div class="col">
+                        <label for="exampleFormControlInput1"  class="form-label">Correo Electrónico </label>
+                        <input [readonly]="this.isDisabled" formControlName="correo" name="correo" [(ngModel)]="empresa.correo" type="email" class="form-control">
+                        <small *ngIf="empresaForm.get('correo')?.invalid && empresaForm.get('correo')?.touched" class="text-danger">Email requerido</small>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">NIT </label>
+                        <input formControlName="nit" type="text"  [(ngModel)]="empresa.nit" class="form-control">
+                        <small *ngIf="empresaForm.get('nit')?.invalid && empresaForm.get('nit')?.touched" class="text-danger">NIT requerido</small>
+                    </div>
+                    <div class="col mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Estado</label>
+                        <select class="form-select" formControlName="estado" [(ngModel)]="empresa.estado">
+                            <option selected disabled>Selecciona un estado</option>
+                            <option *ngFor="let state of estados" [ngValue]="state"> {{ state.estado }}</option>
+                        </select>
+                        <small *ngIf="empresaForm.get('estado')?.invalid && empresaForm.get('estado')?.touched" class="text-danger">Direccion requerida</small> 
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Dirección</label>
+                    <input formControlName="direccion" type="text"  [(ngModel)]="empresa.direccion" class="form-control">
+                    <small *ngIf="empresaForm.get('direccion')?.invalid && empresaForm.get('direccion')?.touched" class="text-danger">Direccion requerida</small> 
+                </div>
+                <button type="submit" class="btn btn-info" [disabled]="!empresaForm.valid">Editar</button>
+            </form>
+           </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+<div class="container">
+    <div class="row display-flex">
+        <div class="col-md-12">
+            <form [formGroup]="empresaForm" name="form" (ngSubmit)="editarEmpresa()">
+                <div class="card px-5 py-3 mt-5" >
+                    <div class="card-title">
+                        <div class="row ph-row">
+                            <div class="col-md-6">
+                                <span class="gestion-title">Editar Empresa</span>
+                                <p class="gestion-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+                            </div>
+                            <div class="col-md-6 flex">
+                                <button class="btn btn-agregar" [routerLink]="['/listar']">Cancelar</button>
+                                <button class="btn btn-agregar" [disabled]="!empresaForm.valid">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Nombre Comercial </label>
+                            <input type="text" formControlName="nombre_comercial" name="nombre_comercial" [(ngModel)]="empresa.nombre_comercial" class="form-control">
+                            <small *ngIf="empresaForm.get('nombre_comercial')?.invalid && empresaForm.get('nombre_comercial')?.touched" class="text-danger">Nombre Comercial requerido</small>
+                        </div>
+                        <div class="col">
+                            <label for="exampleFormControlInput1" class="form-label">Razón Social </label>
+                            <input type="text" formControlName="razon_social" name="razon_social" [(ngModel)]="empresa.razon_social" class="form-control">
+                            <small *ngIf="empresaForm.get('razon_social')?.invalid && empresaForm.get('razon_social')?.touched" class="text-danger">Raz ón Social requerida</small>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Teléfono</label>
+                            <input type="text" formControlName="telefono" name="telefono"  [(ngModel)]="empresa.telefono" class="form-control"  maxlength="11">
+                            <small *ngIf="empresaForm.get('telefono')?.invalid && empresaForm.get('telefono')?.touched" class="text-danger">Teléfono requerido</small>
+                        </div>
+                        <div class="col">
+                            <label for="exampleFormControlInput1" class="form-label">Correo Electrónico </label>
+                            <input [readonly]="this.isDisabled" formControlName="correo" name="correo" [(ngModel)]="empresa.correo" type="email" class="form-control">
+                            <small *ngIf="empresaForm.get('correo')?.invalid && empresaForm.get('correo')?.touched" class="text-danger">Correo inválido</small>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">NIT </label>
+                            <input formControlName="nit" name="nit" [(ngModel)]="empresa.nit" type="text" class="form-control" maxlength="8">
+                            <small *ngIf="empresaForm.get('nit')?.invalid && empresaForm.get('nit')?.touched" class="text-danger">NIT inválido</small>
+                        </div>
+                        <div class="col mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Selecciona un estado</label>        
+                            <select class="form-select" formControlName="estado" name="estado" [(ngModel)]="empresa.estado">
+                                <option selected disabled>---seleccionar---</option>
+                                <option *ngFor="let state of estados" [ngValue]="state"> {{ state.estado }}</option>
+                            </select>
+                            <small *ngIf="empresaForm.get('estado')?.invalid && empresaForm.get('estado')?.touched" class="text-danger">Estado requerido</small> 
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Dirección</label>
+                        <input formControlName="direccion" name="direccion" [(ngModel)]="empresa.direccion" type="text" class="form-control">
+                        <small *ngIf="empresaForm.get('direccion')?.invalid && empresaForm.get('direccion')?.touched" class="text-danger">Dirección requerida</small> 
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

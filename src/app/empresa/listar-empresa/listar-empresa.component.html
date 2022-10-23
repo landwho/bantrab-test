@@ -1,0 +1,46 @@
+<div class="container display-flex">
+    <div class="row" style="overflow-x:auto;">
+        <div class="col-md-12">
+            <div class="card mt-5"  >
+                <div class="card-title mt-5">
+                    <div class="row ph-row">
+                        <div class="col-md-6">
+                            <span class="gestion-title">Gestión de empresas</span>
+                            <p class="gestion-subtitle">Agrega, edita o elimina número de usuarios. </p>
+                        </div>
+                        <div class="col-md-6 flex">
+                            <button class="btn btn-agregar" (click)="openDialog()">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="py-3 px-5" style="overflow-x:auto;">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">No.</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">E-mail</th>
+                                <th scope="col">Nit</th>
+                                <th scope="col">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr  class="mb-5 pointer" *ngFor="let empresa of empresas; let i = index" [ngClass]="((i % 2) == 0 ) ? 'color' : 'color2'">
+                                <td (click)="verEmpresa(empresa.id)">{{empresa.id}}</td>
+                                <td (click)="verEmpresa(empresa.id)">{{empresa.estado}}</td>
+                                <td (click)="verEmpresa(empresa.id)">{{empresa.nombre_comercial}}</td>
+                                <td (click)="verEmpresa(empresa.id)">{{empresa.correo}}</td>
+                                <td (click)="verEmpresa(empresa.id)">{{empresa.nit}}</td>
+                                <td>
+                                    <i class="fa fa-pencil-square-o pointer" aria-hidden="true" (click)="editarEmpresa(empresa.id)"></i>
+                                    <i class="fa fa-trash-o pointer" aria-hidden="true" (click)="eliminar(empresa.id,empresa)"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
