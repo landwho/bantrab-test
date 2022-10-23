@@ -15,7 +15,6 @@ const routes: Routes = [
   { path: '**', redirectTo:  '/' }
 ];
 
-
 const routerOptions: ExtraOptions = {
   useHash: true,
   anchorScrolling: 'enabled',

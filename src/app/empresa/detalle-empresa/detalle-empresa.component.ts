@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
-import { EmpresaModel } from '../empresa-model'; 
 import { EmpresaService } from '../empresa.service';
 @Component({
   selector: 'app-detalle-empresa',
@@ -32,16 +31,8 @@ export class DetalleEmpresaComponent implements OnInit {
     }) 
   }
 
-
- 
-
-  ngOnDestroy(): void
-    {
-       
+  ngOnDestroy(){
         this._unsubscribeAll.next(null);
         this._unsubscribeAll.complete();
     }
-
-
-
 }

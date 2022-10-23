@@ -30,18 +30,15 @@ export class EditarEmpresaComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
     this._activateRoute.params.subscribe(params => {
       this.id = params
       this.empresaId = this.id.id
-
       this._api.verEmpresa(this.empresaId).pipe(takeUntil(this._unsubscribeAll))
       .subscribe((data) => {
-     
         this.empresa = data;
-      }) 
-
-
-    })
+      }) ;
+    });
     
   }
   
@@ -66,20 +63,19 @@ export class EditarEmpresaComponent implements OnInit {
   }
 
   editarEmpresa(): void {
-    this.empresaForm.value
-    // console.log(this.empresaForm.value)
-    if (this.empresaForm.valid) {
-        this._api.editarEmpresa(this.empresaId, this.empresaForm.value).subscribe(data=>{
 
-          Swal.fire("Empresa modificada correctamente.")
-          this.router.navigateByUrl('/listar')
-        },
-        error => {
-          this.error = error;
-          if(this.error.error.correo){Swal.fire("Correo ya esta registrado")}
-          if(this.error.error.razon_social){Swal.fire("Razon social ya esta registrado")}
-          if(this.error.error.nit){Swal.fire("El NIT ya esta registrado")}
-        }); 
+    this.empresaForm.value
+    if (this.empresaForm.valid) {
+      this._api.editarEmpresa(this.empresaId, this.empresaForm.value).subscribe(data=>{
+        Swal.fire("Empresa modificada correctamente.")
+        this.router.navigateByUrl('/listar')
+      },
+      error => {
+        this.error = error;
+        if(this.error.error.correo){Swal.fire("Correo ya esta registrado")}
+        if(this.error.error.razon_social){Swal.fire("Razon social ya esta registrado")}
+        if(this.error.error.nit){Swal.fire("El NIT ya esta registrado")}
+      }); 
     }
 
   }
@@ -99,7 +95,5 @@ export class EditarEmpresaComponent implements OnInit {
     this._unsubscribeAll.next(null);
     this._unsubscribeAll.complete();
   }
-
-
-
+  
 }

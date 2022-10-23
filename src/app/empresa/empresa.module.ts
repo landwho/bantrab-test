@@ -10,8 +10,6 @@ import {MatTableModule} from '@angular/material/table';
 import { DetalleEmpresaComponent } from './detalle-empresa/detalle-empresa.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
-
-
 @NgModule({
     imports: [
         CommonModule,
@@ -31,7 +29,5 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
         
     ]
 })
-
-
 
 export class EmpresaModule { }

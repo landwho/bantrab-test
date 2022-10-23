@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
-import { EmpresaModel } from '../empresa-model'; 
 import { EmpresaService } from '../empresa.service';
 import Swal from 'sweetalert2';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { CrearNuevaComponent } from '../crear-nueva/crear-nueva.component';
 
 @Component({
   selector: 'app-listar-empresa',
@@ -20,18 +18,9 @@ export class ListarEmpresaComponent implements OnInit {
   constructor(private _api:EmpresaService, private router:Router, public dialog:MatDialog) 
   { }
 
-    ngOnInit(): void {
-      this.getLista()
-    }
-
-    openDialog(): void {
-      const dialogRef = this.dialog.open(CrearNuevaComponent, {
-        width: '70%',
-        data: this.empresas,
-      });
-  
-    
-    }
+  ngOnInit(): void {
+    this.getLista()
+  }
 
   getLista(){
     this._api.getListEmpresas().pipe(takeUntil(this._unsubscribeAll))
@@ -82,7 +71,5 @@ export class ListarEmpresaComponent implements OnInit {
     this._unsubscribeAll.next(null);
     this._unsubscribeAll.complete();
   }
-
-
 
 }

@@ -8,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { EmpresaModule } from './empresa/empresa.module';
 import {MatDialogModule} from '@angular/material/dialog';
 
-
 @NgModule({
   declarations: [
     AppComponent,
