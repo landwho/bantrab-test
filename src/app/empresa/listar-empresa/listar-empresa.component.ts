@@ -66,7 +66,6 @@ export class ListarEmpresaComponent implements OnInit {
             this.empresas.splice(index, 1);
               this._api.eliminarEmpresa(id).pipe(takeUntil(this._unsubscribeAll))
               .subscribe((data) => {
-              console.log(data);
               Swal.fire(
                 'Eliminado!',
                 'Empresa fue eliminada exitosamente.',
