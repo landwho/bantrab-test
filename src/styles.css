@@ -37,7 +37,7 @@ label{
     font-size: 2rem;
     font-weight: 800;
 }
-.btn-agregar{
+.btn-bantrab{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,5 +45,8 @@ label{
     border-radius: 25px;
     background: rgb(107,30,171);
     background: linear-gradient(90deg, rgba(107,30,171,1) 0%, rgba(9,9,121,1) 38%, rgba(32,136,200,1) 100%);
+    color: white;
+}
+.btn-bantrab:hover{
     color: white;
 }

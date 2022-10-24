@@ -26,7 +26,6 @@ export class EditarEmpresaComponent implements OnInit {
 
   constructor(private _api:EmpresaService, private _activateRoute : ActivatedRoute, private router: Router) {
     this.empresaForm = this.createForm();
-
    }
 
   ngOnInit(): void {

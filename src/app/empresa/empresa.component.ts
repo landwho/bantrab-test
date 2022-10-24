@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-
 @Component({
   selector: 'app-empresa-component',
   templateUrl: './empresa.component.html',
