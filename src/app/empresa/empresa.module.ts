@@ -9,6 +9,7 @@ import { CrearNuevaComponent} from './crear-nueva/crear-nueva.component'
 import {MatTableModule} from '@angular/material/table';
 import { DetalleEmpresaComponent } from './detalle-empresa/detalle-empresa.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { LoaderComponent } from '../loader/loader.component';
 
 @NgModule({
     imports: [
@@ -25,8 +26,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
         CrearNuevaComponent,
         EditarEmpresaComponent,
         ListarEmpresaComponent,
-        DetalleEmpresaComponent
-        
+        DetalleEmpresaComponent,
+        LoaderComponent
     ]
 })
 

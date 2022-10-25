@@ -15,6 +15,7 @@ export class ListarEmpresaComponent implements OnInit {
   private _unsubscribeAll: Subject<any> = new Subject<any>();
   empresas:any;
   items:any;
+  loader:boolean;
   constructor(private _api:EmpresaService, private router:Router, public dialog:MatDialog) 
   { }
 
@@ -24,10 +25,12 @@ export class ListarEmpresaComponent implements OnInit {
 
 
   getLista(){
+    this.loader = true;
     this._api.getListEmpresas().pipe(takeUntil(this._unsubscribeAll))
     .subscribe((data) => {
       this.empresas = data;
-      this.items =this.empresas.length
+      this.items =this.empresas.length;
+      this.loader = false;
     });
   }
 
