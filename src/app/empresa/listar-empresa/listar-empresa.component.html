@@ -26,20 +26,29 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr  class="mb-5 pointer" *ngFor="let empresa of empresas; let i = index" [ngClass]="((i % 2) == 0 ) ? 'color' : 'color2'">
-                                <td (click)="verEmpresa(empresa.id)">{{empresa.id}}</td>
-                                <td (click)="verEmpresa(empresa.id)">{{empresa.estado}}</td>
-                                <td (click)="verEmpresa(empresa.id)">{{empresa.nombre_comercial}}</td>
-                                <td (click)="verEmpresa(empresa.id)">{{empresa.correo}}</td>
-                                <td (click)="verEmpresa(empresa.id)">{{empresa.nit}}</td>
-                                <td>
-                                    <i class="fa fa-pencil-square-o pointer" aria-hidden="true" (click)="editarEmpresa(empresa.id)"></i>
-                                    <i class="fa fa-trash-o pointer" aria-hidden="true" (click)="eliminar(empresa.id,empresa)"></i>
-                                </td>
-                            </tr>
+                            <ng-container *ngIf="this.items > 0; else noItems">
+                                <tr  class="mb-5 pointer" *ngFor="let empresa of empresas; let i = index" [ngClass]="((i % 2) == 0 ) ? 'color' : 'color2'">
+                                    <td (click)="verEmpresa(empresa.id)">{{empresa.id}}</td>
+                                    <td (click)="verEmpresa(empresa.id)">{{empresa.estado}}</td>
+                                    <td (click)="verEmpresa(empresa.id)">{{empresa.nombre_comercial}}</td>
+                                    <td (click)="verEmpresa(empresa.id)">{{empresa.correo}}</td>
+                                    <td (click)="verEmpresa(empresa.id)">{{empresa.nit}}</td>
+                                    <td>
+                                        <i class="fa fa-pencil-square-o pointer" aria-hidden="true" (click)="editarEmpresa(empresa.id)"></i>
+                                        <i class="fa fa-trash-o pointer" aria-hidden="true" (click)="eliminar(empresa.id,empresa)"></i>
+                                    </td>
+                                </tr>
+                            </ng-container>
+
+                         
+
                         </tbody>
                     </table>
+                    
                 </div>
+                <ng-template #noItems>
+                    <h4 class="text-center mt-5">No items on table</h4>
+                </ng-template>
             </div>
         </div>
     </div>
